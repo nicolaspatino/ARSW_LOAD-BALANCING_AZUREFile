@@ -86,7 +86,8 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 **Preguntas**
 
 1. ¿Cuántos y cuáles recursos crea Azure junto con la VM?
-   Azure crea una IP pública, un grupo de red, una interfaz de red, un disco de almacenamiento
+
+   _Azure crea una IP pública, un grupo de red, una interfaz de red, un disco de almacenamiento_
 2. ¿Brevemente describa para qué sirve cada recurso?
    *IP PUBLICA*  dirección IP para acceder a los servicios desplegados.
    *GRUPO DE RED*  controlar el acceso a los en la red privada de Azure generada con la maquina virtual.
