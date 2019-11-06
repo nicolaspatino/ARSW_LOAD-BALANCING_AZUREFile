@@ -101,10 +101,48 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
    
 4. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
 
-   | value    | Time                         |
-   |* 1000000 | ![](images/shots/primero.png)|
-   |* 1010000 | ![](images/shots/segundo.PNG)|                         |
-   | Pipe     | \|                           |
+   
+   * 1000000 
+   
+   ![](images/shots/primero.png)
+   
+   * 1010000  
+   
+   ![](images/shots/segundo.PNG)
+   
+   * 1020000
+   
+   ![](images/shots/tercero.PNG)
+   
+   * 1030000
+   
+   ![](images/shots/cuarto.PNG)
+   
+   * 1040000
+   
+   ![](images/shots/quinto.PNG)
+   
+   * 1050000
+   
+   ![](images/shots/sexto.PNG)
+   
+   * 1060000
+   
+   ![](images/shots/septimo.PNG)
+   
+   * 1070000
+   
+   ![](images/shots/octavo.PNG)
+   
+   * 1080000
+   
+   ![](images/shots/noveno.PNG)
+   
+   * 1090000    
+   
+   ![](images/shots/decimo.PNG)
+   
+  
 
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
