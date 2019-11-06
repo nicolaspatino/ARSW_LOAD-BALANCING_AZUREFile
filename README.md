@@ -87,15 +87,25 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
 1. ¿Cuántos y cuáles recursos crea Azure junto con la VM?
 
-   _Azure crea una IP pública, un grupo de red, una interfaz de red, un disco de almacenamiento_
+   Azure crea una IP pública, un grupo de red, una interfaz de red, un disco de almacenamiento_
 2. ¿Brevemente describa para qué sirve cada recurso?
+
    *IP PUBLICA*  dirección IP para acceder a los servicios desplegados.
    *GRUPO DE RED*  controlar el acceso a los en la red privada de Azure generada con la maquina virtual.
    *INTERFAZ DE RED* Permite que la máquina virtual generada se comunique con los recursos de de la red.
    *DISCO DE ALMACENAMIENTO* Espacio de almacenamiento dispuesto para la maquina virtual generada.
+   
 3. ¿Al cerrar la conexión ssh con la VM, por qué se cae la aplicación que ejecutamos con el comando `npm FibonacciApp.js`? ¿Por qué debemos crear un *Inbound port rule* antes de acceder al servicio?
+
    cuando se establece una conexion ssh, se genera una instancia de aquello a lo que nos hayamos conectado, en este caso la maquina        virtual, si se cierra la conexion, esa instancia se termina igual que todas sus ejecuciones. Un *Inbound port rule* establece el        puerto de entrada del trafico de red, por lo que se define para que la maquina permita el ingreso de tráfico externo.
+   
 4. Adjunte tabla de tiempos e interprete por qué la función tarda tando tiempo.
+
+   | value    | Time                         |
+   |* 1000000 | ![](images/shots/primero.png)|
+   |* 1010000 | ![](images/shots/segundo.PNG)|                         |
+   | Pipe     | \|                           |
+
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
     * Tiempos de ejecución de cada petición.
