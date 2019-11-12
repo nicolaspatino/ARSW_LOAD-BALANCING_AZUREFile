@@ -142,9 +142,12 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
    
    ![](images/shots/decimo.PNG)
    
-  
+  Para realizar el calculo de cada valor siempre itera y recalcula el valor, podria ser mas eficiente si no tuviera que recalcular los     mismos valores cada vez.
 
 5. Adjunte imágen del consumo de CPU de la VM e interprete por qué la función consume esa cantidad de CPU.
+
+    ![](images/shots/CPU.PNG)
+    
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
     * Tiempos de ejecución de cada petición.
     * Si hubo fallos documentelos y explique.
