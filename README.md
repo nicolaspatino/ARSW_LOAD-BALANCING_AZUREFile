@@ -148,6 +148,8 @@ Cuando un conjunto de usuarios consulta un enésimo número (superior a 1000000)
 
     ![](images/shots/CPU.PNG)
     
+    No se divide la carga de cada peticion.
+    
 6. Adjunte la imagen del resumen de la ejecución de Postman. Interprete:
     * Tiempos de ejecución de cada petición.
     * Si hubo fallos documentelos y explique.
