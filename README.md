@@ -301,6 +301,11 @@ newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALAN
 * ¿Cuál es el propósito del *Network Security Group*?
    filtrar el tráfico de red hacia y desde los recursos de en una red virtual.
 * Informe de newman 1 (Punto 2)
+
+ ![](images/shots/NewmanLB.PNG)
+ 
+  ![](images/shots/NewmanUltimo.PNG)
+
 * Presente el Diagrama de Despliegue de la solución.
 
  ![](images/shots/diagrama.PNG)
