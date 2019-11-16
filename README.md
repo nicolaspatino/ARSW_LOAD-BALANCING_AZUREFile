@@ -246,12 +246,46 @@ newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALAN
 **Preguntas**
 
 * ¿Cuáles son los tipos de balanceadores de carga en Azure y en qué se diferencian?, ¿Qué es SKU, qué tipos hay y en qué se diferencian?, ¿Por qué el balanceador de carga necesita una IP pública?
+   un balanceador de cargas permite que las aplicaciones escalen y permite crear una        alta disponibilidad para los servicios expuestos proporciona baja latencia y alto rendimiento. 
+   
+  
+|  | SKU Estándar | SKU Básico |
+|:----------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|:------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
+| Tamaño de grupo de back-end | Admite hasta 1000 instancias. | Admite hasta 100 instancias. |
+| Puntos de conexión del grupo de back-end | Cualquier máquina virtual en una única red virtual, lo que incluye la combinación de máquinas virtuales, conjuntos de disponibilidad y grupos de escalado de máquinas virtuales. | Máquinas virtuales en un único conjunto de disponibilidad o conjunto de escalado de máquinas virtuales. |
+| Sondeos de mantenimiento | TCP, HTTP, HTTPS | TCP, HTTP |
+| Comportamiento del sondeo de mantenimiento | Las conexiones TCP permanecen activas en el sondeo de la instancia y en todos los sondeos | Las conexiones TCP permanecen activas en el sondeo de la instancia. Todas las conexiones TCP finalizan en todos los sondeos. |
+| Zonas de disponibilidad | En SKU de nivel Estándar, front-end zonales y con redundancia de zona para la entrada y la salida, asignaciones de flujos de salida, supervivencia a errores de zona, equilibrio de carga entre zonas. | No disponible. |
+| Diagnóstico | Azure Monitor, métricas multidimensionales, incluidos bytes y contadores de paquetes, estado de sondeo de mantenimiento, intentos de conexión (TCP SYN), mantenimiento de la conexión de salida (flujos SNAT correctos e incorrectos), medidas de planos de datos activos. | Azure Log Analytics solo para Load Balancer público, alerta de agotamiento de SNAT, recuento de mantenimientos del grupo back-end. |
+| Puertos HA | Equilibrador de carga interno | No disponible. |
+| Seguro de forma predeterminada | La dirección IP pública, los puntos de conexión de Load Balancer y los puntos de conexión de Load Balancer interno están cerca de los flujos de entrada a menos que el grupo de seguridad de red los incluya en la lista de permitidos. | Abierta de forma predeterminada, grupo de seguridad de red opcional. |
+| Conexiones salientes | Puede definir explícitamente un protocolo NAT de salida basado en grupos con reglas de salida. Puede utilizar varios front-end con la deshabilitación de envíos en cada regla de equilibrio de carga. Para usar la conectividad de salida, debe crearse explícitamente un escenario de salida para la máquina virtual, el conjunto de disponibilidad y el conjunto de escalado de máquinas virtuales. Los puntos de conexión de servicio de red virtual son accesibles sin conectividad de salida y no se cuentan como datos procesados. Las direcciones IP públicas, incluidos los servicios de PaaS de Azure que no están disponibles como puntos de conexión de servicio de red virtual, deben ser accesibles mediante conectividad de salida y cuentan como datos procesados. Si solo hay una instancia de Load Balancer interno que atiende una máquina virtual, un conjunto de disponibilidad o un conjunto de escalado de máquinas virtuales, no habrá conexiones de salida disponibles mediante el protocolo SNAT predeterminado; use en su lugar reglas de salida. La programación de SNAT de salida es específica del protocolo de transporte de la regla de equilibrio de carga de entrada. | Único front-end, seleccionado de forma aleatoria, cuando hay varios front-ends. Cuando solo Load Balancer interno atiende una máquina virtual, un conjunto de disponibilidad o un conjunto de escalado de máquinas virtuales, se usa SNAT de forma predeterminada. |
+| Reglas de salida | Configuración declarativa del protocolo NAT de salida, con las direcciones IP públicas o los prefijos de IP pública, o ambos, el tiempo de espera de inactividad de salida (4-120 minutos) y la asignación de puertos de SNAT personalizados | No disponible. |
+| Restablecimiento de TCP en tiempo de espera de inactividad | Habilite en cualquier regla el restablecimiento de TCP (TCP RST) en tiempo de espera de inactividad. | No disponible |
+| Varios servidores front-end | Entrada y salida | Solo de entrada |
+| Operaciones de administración | La mayoría de las operaciones en menos de 30 segundos | Normalmente, entre 60 y 90 segundos. |
+| Contrato de nivel de servicio | 99,99 % para la ruta de acceso a los datos con dos máquinas virtuales correctas. | No aplicable. |
+| Precios | Se cobra según el número de reglas y los datos procesados de entrada y salida asociados con el recurso. | Sin cargo. |
+
 * ¿Cuál es el propósito del *Backend Pool*?
+  grupo de instancias del balanceador de carga que se encarga de recibir el tráfico similar de la aplicación.
+
 * ¿Cuál es el propósito del *Health Probe*?
+   envía solicitudes periódicas de sondeo HTTP / HTTPS a cada uno de los backends configurados. Las solicitudes de sondeo determinan la   proximidad y el estado de cada back-end para equilibrar la carga de sus solicitudes de usuario final. 
+   
 * ¿Cuál es el propósito de la *Load Balancing Rule*? ¿Qué tipos de sesión persistente existen, por qué esto es importante y cómo puede afectar la escalabilidad del sistema?.
+   para distribuir el tráfico que llega al front-end a las instancias de grupo de back-end
+   
 * ¿Qué es una *Virtual Network*? ¿Qué es una *Subnet*? ¿Para qué sirven los *address space* y *address range*?
+   *Virtual Network* un centro de datos o red de proveedores de servicios proporcione la estructura de red más adecuada y eficiente para     las aplicaciones    que aloja utlizando software en vez de requerir de conexiones hardware.
+   
+   *address space y address range* es un rango de direcciones válidas en la memoria que están disponibles para un programa o proceso, La     memoria puede ser física o virtual y se utiliza para ejecutar instrucciones y almacenar datos.
+   
 * ¿Qué son las *Availability Zone* y por qué seleccionamos 3 diferentes zonas?. ¿Qué significa que una IP sea *zone-redundant*?
+   Son ubicaciones aisladas dentro de las regiones del centro de datos desde donde se originan y operan los servicios de nube pública
+   zone-redundat significa que se podra acceder y administrar los datos en caso de que una zona no este disponible.
 * ¿Cuál es el propósito del *Network Security Group*?
+   filtrar el tráfico de red hacia y desde los recursos de en una red virtual.
 * Informe de newman 1 (Punto 2)
 * Presente el Diagrama de Despliegue de la solución.
 
