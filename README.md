@@ -246,7 +246,7 @@ newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALAN
 **Preguntas**
 
 * ¿Cuáles son los tipos de balanceadores de carga en Azure y en qué se diferencian?, ¿Qué es SKU, qué tipos hay y en qué se diferencian?, ¿Por qué el balanceador de carga necesita una IP pública?
-   un balanceador de cargas permite que las aplicaciones escalen y permite crear una        alta disponibilidad para los servicios expuestos proporciona baja latencia y alto rendimiento. _
+   un balanceador de cargas permite que las aplicaciones escalen y permite crear una        alta disponibilidad para los servicios expuestos proporciona baja latencia y alto rendimiento. 
    
   
 |  | SKU Estándar | SKU Básico |
@@ -268,11 +268,24 @@ newman run ARSW_LOAD-BALANCING_AZURE.postman_collection.json -e [ARSW_LOAD-BALAN
 | Precios | Se cobra según el número de reglas y los datos procesados de entrada y salida asociados con el recurso. | Sin cargo. |
 
 * ¿Cuál es el propósito del *Backend Pool*?
+  grupo de instancias del balanceador de carga que se encarga de recibir el tráfico similar de la aplicación.
+
 * ¿Cuál es el propósito del *Health Probe*?
+   envía solicitudes periódicas de sondeo HTTP / HTTPS a cada uno de los backends configurados. Las solicitudes de sondeo determinan la   proximidad y el estado de cada back-end para equilibrar la carga de sus solicitudes de usuario final. 
+   
 * ¿Cuál es el propósito de la *Load Balancing Rule*? ¿Qué tipos de sesión persistente existen, por qué esto es importante y cómo puede afectar la escalabilidad del sistema?.
+   para distribuir el tráfico que llega al front-end a las instancias de grupo de back-end
+   
 * ¿Qué es una *Virtual Network*? ¿Qué es una *Subnet*? ¿Para qué sirven los *address space* y *address range*?
+   *Virtual Network* un centro de datos o red de proveedores de servicios proporcione la estructura de red más adecuada y eficiente para     las aplicaciones    que aloja utlizando software en vez de requerir de conexiones hardware.
+   
+   *address space y address range* es un rango de direcciones válidas en la memoria que están disponibles para un programa o proceso, La     memoria puede ser física o virtual y se utiliza para ejecutar instrucciones y almacenar datos.
+   
 * ¿Qué son las *Availability Zone* y por qué seleccionamos 3 diferentes zonas?. ¿Qué significa que una IP sea *zone-redundant*?
+   Son ubicaciones aisladas dentro de las regiones del centro de datos desde donde se originan y operan los servicios de nube pública
+   zone-redundat significa que se podra acceder y administrar los datos en caso de que una zona no este disponible.
 * ¿Cuál es el propósito del *Network Security Group*?
+   filtrar el tráfico de red hacia y desde los recursos de en una red virtual.
 * Informe de newman 1 (Punto 2)
 * Presente el Diagrama de Despliegue de la solución.
 
